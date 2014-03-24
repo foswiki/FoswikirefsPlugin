@@ -1,0 +1,6 @@
+!noci
+data/Sandbox/PluginTestFoswikirefsPlugin.txt 0644
+data/System/FoswikirefsPlugin.txt 0644
+lib/Foswiki/Plugins/FoswikirefsPlugin.pm 0644
+lib/Foswiki/Plugins/FoswikirefsPlugin/RefTable.pm 0644
+
