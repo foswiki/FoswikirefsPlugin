@@ -1,31 +1,33 @@
-# See bottom of file for license and copyright information
-use strict;
-use warnings;
-
+# See the bottom of the file for description, copyright and license information
 package FoswikirefsPluginTests;
 
-use FoswikiTestCase;
-our @ISA = qw( FoswikiTestCase );
+# SMELL: this test suite was retro-fitted to an existing plugin, and
+# does *not* test spam removal from topics. It *only* tests the
+# registration handlers and removeUser REST handler.
+
+use FoswikiFnTestCase;
+our @ISA = qw( FoswikiFnTestCase );
 
 use strict;
-use warnings;
-use Foswiki;
-use CGI;
-
-my $foswiki;
+use Error (':try');
 
 sub new {
     my $self = shift()->SUPER::new(@_);
     return $self;
 }
 
-# Set up the test fixture
 sub set_up {
     my $this = shift;
-
     $this->SUPER::set_up();
 
-    $Foswiki::Plugins::SESSION = $foswiki;
+}
+
+sub loadExtraConfig {
+    my $this = shift;
+    $this->SUPER::loadExtraConfig();
+    $Foswiki::cfg{Plugins}{FoswikirefsPlugin}{Enabled} = 1;
+    $Foswiki::cfg{Plugins}{FoswikirefsPlugin}{Module} =
+      'Foswiki::Plugins::FoswikirefsPlugin';
 }
 
 sub tear_down {
@@ -33,15 +35,48 @@ sub tear_down {
     $this->SUPER::tear_down();
 }
 
-sub test_self {
+sub test_GITREF {
     my $this = shift;
+
+    my $t = Foswiki::Func::expandCommonVariables("%GITREF{123412341234}%");
+    $this->assert_equals(
+'[[https://github.com/foswiki/core/commit/123412341234][core:123412341234]]',
+        $t
+    );
+
+    $t = Foswiki::Func::expandCommonVariables(
+        "%GITREF{FoswikiprefsPlugin:123412341234}%");
+    $this->assert_equals(
+'[[https://github.com/foswiki/FoswikiprefsPlugin/commit/123412341234][FoswikiprefsPlugin:123412341234]]',
+        $t
+    );
+
+    $t = Foswiki::Func::expandCommonVariables(
+        "%GITREF{foobar:experimental:123412341234}%");
+    $this->assert_equals(
+'[[https://github.com/foobar/experimental/commit/123412341234][experimental:123412341234]]',
+        $t
+    );
+}
+
+sub test_REF2REF {
+    my $this = shift;
+
+    my $t = Foswiki::Func::expandCommonVariables("%REV2REF{15}%");
+    $this->assert_equals(
+'[[https://github.com/foswiki/FastCGIEngineContrib/commit/e2de71d92065][FastCGIEngineContrib:e2de71d92065]] [[https://github.com/foswiki/UnitTestContrib/commit/31615cdcf42b][UnitTestContrib:31615cdcf42b]]',
+        $t
+    );
+
 }
 
 1;
 __END__
-Foswiki - The Free and Open Source Wiki, http://foswiki.org/
 
-Copyright (C) 2008-%$CREATEDYEAR% Foswiki Contributors. Foswiki Contributors
+Plugin for Foswiki - The Free and Open Source Wiki, http://foswiki.org/
+
+Copyright (C) 2014 George Clark and Foswiki Contributors.
+All Rights Reserved. Foswiki Contributors
 are listed in the AUTHORS file in the root of this distribution.
 NOTE: Please extend that file, not this notice.
 
@@ -55,4 +90,6 @@ This program is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
-As per the GPL, removal of this notice is prohibited.
+For licensing info read LICENSE file in the Foswiki root.
+
+Author: George Clark

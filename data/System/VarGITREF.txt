@@ -1,0 +1,8 @@
+%META:TOPICINFO{author="ProjectContributor" date="1407873887" format="1.1" version="1"}%
+#VarGITREF
+---+++ GITREF{ _reference_pointer_ } - Generate a link to github to view the referenced commit.
+   * ==%<nop>GITREF{account:repository:reference}%==
+| *Parameter* | *Default* | *Meaning* |
+| =account= | =foswiki= | The github account owning the repository. |
+| =repository= | =core= | The repository name |
+| =refhash= | Not set | The 7-40 character git commit hash. 12 characters recommended. |

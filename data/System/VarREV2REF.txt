@@ -1,0 +1,8 @@
+%META:TOPICINFO{author="ProjectContributor" date="1407873887" format="1.1" version="1"}%
+#VarREV2REF
+---+++ <nop>REV2REF{ _svn_revision_ } - Generate a link to github to view the referenced svn commit
+
+   * ==%<nop>REV2REF{&lt;svn_revision&gt;}%==
+| *Parameter* | *Default* | *Meaning* |
+| =svn_revision= | Not set | A 1-5 digit svn revision. |
+
