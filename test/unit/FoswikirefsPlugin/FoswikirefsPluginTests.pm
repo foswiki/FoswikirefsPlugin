@@ -62,7 +62,18 @@ sub test_GITREF {
 sub test_REF2REF {
     my $this = shift;
 
-    my $t = Foswiki::Func::expandCommonVariables("%REV2REF{15}%");
+    my $t = Foswiki::Func::expandCommonVariables("%REV2REF{0}%");
+    $this->assert_equals( 'Rev 0 not found', $t );
+    $t = Foswiki::Func::expandCommonVariables("%REV2REF{12}%");
+    $this->assert_equals( 'Rev 12 not found', $t );
+    $t = Foswiki::Func::expandCommonVariables("%REV2REF{-1}%");
+    $this->assert_equals( 'Invalid svn rev', $t );
+    $t = Foswiki::Func::expandCommonVariables("%REV2REF{a1}%");
+    $this->assert_equals( 'Invalid svn rev', $t );
+    $t = Foswiki::Func::expandCommonVariables("%REV2REF{123534}%");
+    $this->assert_equals( 'Invalid svn rev', $t );
+
+    $t = Foswiki::Func::expandCommonVariables("%REV2REF{15}%");
     $this->assert_equals(
 '[[https://github.com/foswiki/FastCGIEngineContrib/commit/e2de71d92065][FastCGIEngineContrib:e2de71d92065]] [[https://github.com/foswiki/UnitTestContrib/commit/31615cdcf42b][UnitTestContrib:31615cdcf42b]]',
         $t

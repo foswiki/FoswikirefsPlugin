@@ -52,9 +52,11 @@ sub _REV2REF {
 
     my $rev = $_[1]->{_DEFAULT};
     return "Invalid svn rev" unless $rev =~ m/^[0-9]{1,5}$/;
+    my $refmap = Foswiki::Plugins::FoswikirefsPlugin::RefTable::mapRev($rev);
+    return "Rev $rev not found" unless defined $refmap;
+
     my @refs =
-      split( /~/, Foswiki::Plugins::FoswikirefsPlugin::RefTable::mapRev($rev) );
-    return "Rev $rev not found" unless scalar @refs;
+      split( /~/, $refmap );
 
     my $resp;
 
