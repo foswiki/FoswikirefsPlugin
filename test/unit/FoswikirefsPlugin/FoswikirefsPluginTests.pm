@@ -1,10 +1,6 @@
 # See the bottom of the file for description, copyright and license information
 package FoswikirefsPluginTests;
 
-# SMELL: this test suite was retro-fitted to an existing plugin, and
-# does *not* test spam removal from topics. It *only* tests the
-# registration handlers and removeUser REST handler.
-
 use FoswikiFnTestCase;
 our @ISA = qw( FoswikiFnTestCase );
 
@@ -75,7 +71,7 @@ sub test_REF2REF {
 
     $t = Foswiki::Func::expandCommonVariables("%REV2REF{15}%");
     $this->assert_equals(
-'[[https://github.com/foswiki/FastCGIEngineContrib/commit/e2de71d92065][FastCGIEngineContrib:e2de71d92065]] [[https://github.com/foswiki/UnitTestContrib/commit/31615cdcf42b][UnitTestContrib:31615cdcf42b]]',
+'[[https://github.com/foswiki/distro/commit/2b6bafa7b2a7][distro:2b6bafa7b2a7]] [[https://github.com/foswiki/FastCGIEngineContrib/commit/e2de71d92065][FastCGIEngineContrib:e2de71d92065]]',
         $t
     );
 

@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" date="1407873887" format="1.1" version="1"}%
+%META:TOPICINFO{author="ProjectContributor" date="1408393309" format="1.1" version="1"}%
 %META:TOPICPARENT{name="Plugins"}%
 <!--
 One line description, required for extensions repository catalog.
@@ -20,7 +20,7 @@ This plugin implements two macros:
 
 ---++++ Examples
 | *Macro* | *Displays* |
-| =%<nop>GITREF{ee4b15444259}%= | %GITREF{ee4b15444259}% |
+| =%<nop>GITREF{96213fee5462}%= | %GITREF{96213fee5462}% |
 | =%<nop>GITREF{NatEditPlugin:370f069dbc8d}%= | %GITREF{NatEditPlugin:370f069dbc8d}% |
 
 The git reference can be entered as a 7-40 character string.  However github
@@ -40,7 +40,7 @@ revision.
 ---++++ Examples
 | *Macro* | *Displays* |
 | =%<nop>REV2REF{15}%= | %REV2REF{15}% |
-| =%<nop>REV2REF{17895}%= | %REV2REF{17895}% |
+| =%<nop>REV2REF{2746}%= | %REV2REF{2746}% |
 
 ---++ Preferences
 

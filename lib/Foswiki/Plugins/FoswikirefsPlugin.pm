@@ -37,7 +37,7 @@ sub _GITREF {
 
     my @p = split( ':', $_[1]->{_DEFAULT}, 3 );
 
-    unshift @p, 'core'    if ( scalar @p eq 1 );
+    unshift @p, 'distro'  if ( scalar @p eq 1 );
     unshift @p, 'foswiki' if ( scalar @p eq 2 );
 
     return "[[https://github.com/$p[0]/$p[1]/commit/$p[2]][$p[1]:$p[2]]]";
