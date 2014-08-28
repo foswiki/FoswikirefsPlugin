@@ -36,7 +36,7 @@ sub test_GITREF {
 
     my $t = Foswiki::Func::expandCommonVariables("%GITREF{123412341234}%");
     $this->assert_equals(
-'[[https://github.com/foswiki/core/commit/123412341234][core:123412341234]]',
+'[[https://github.com/foswiki/distro/commit/123412341234][distro:123412341234]]',
         $t
     );
 
