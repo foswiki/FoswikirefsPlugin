@@ -7,8 +7,8 @@ use warnings;
 use Foswiki::Func    ();    # The plugins API
 use Foswiki::Plugins ();    # For the API version
 
-our $VERSION = '1.01';
-our $RELEASE = '1.01';
+our $VERSION = '1.02';
+our $RELEASE = '1.02';
 
 our $SHORTDESCRIPTION = 'Display subversion rev, and git refs on Github';
 
